@@ -1,0 +1,30 @@
+﻿<h1>Business events</h1>
+<form ng-submit="getEvents()">
+    <input type="text" name="startDate" />
+    <input type="text" name="endDate" />
+    <input type="button" name="submit" value="Submit"/>
+</form>
+<div id="events">
+    <ul>
+        <li *ngFor="let event of events">
+            <strong>
+                Description:
+            </strong>
+            {{ event.description }}
+            <strong>Event starts:</strong>
+            {{event.startDate}} <strong *ngIf="event.startTime">at</strong> {{event.startTime}} <strong>
+                Event ends:
+            </strong>
+            {{event.endDate}} <strong *ngIf="event.endTime">at</strong> {{event.endTime}}
+            <br />
+            <strong>
+                Category:
+            </strong>
+            {{event.category}}
+            <div *ngFor="let member of event.members">
+                <strong><i>Member:</i></strong> {{member.fullTitle}} <strong *ngIf="member.party"><i>Party:</i></strong> {{member.party}}
+                <strong *ngIf="member.memberFrom"><i>member from</i></strong> {{member.memberFrom}}
+            </div>
+        </li>
+    </ul>
+</div>
